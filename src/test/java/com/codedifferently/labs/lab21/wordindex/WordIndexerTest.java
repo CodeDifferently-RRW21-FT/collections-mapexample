@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+import java.util.Set;
 
 public class WordIndexerTest {
 
@@ -16,7 +17,7 @@ public class WordIndexerTest {
     public void wordsThatStartWithTheLetterTest01(){
         WordIndexer index = new WordIndexer();
         String[] expected = new String[]{"we", "what", "where", "who"};
-        ArrayList<String> output = index.wordsThatStartWithTheLetter("w", input01);
+        Set<String> output = index.wordsThatStartWithTheLetter("w", input01);
         String[] actual = new String[output.size()];
         output.toArray(actual);
         Assertions.assertArrayEquals(expected,actual);

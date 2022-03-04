@@ -40,7 +40,7 @@ public class Student {
         return Objects.hash(firstName, lastName);
     }
 
-    public String toString(){
+   public String toString(){
         return firstName + " " + lastName;
     }
 }

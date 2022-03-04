@@ -1,6 +1,6 @@
 package com.codedifferently.labs.lab21.wordindex;
 
-import java.util.ArrayList;
+import java.util.*;
 
 public class WordIndexer {
 
@@ -9,11 +9,25 @@ public class WordIndexer {
      * @param letter
      * @return
      */
-    public ArrayList<String> wordsThatStartWithTheLetter(String letter, String input){
-        // lowercase everything
-        // remove all the non alpha symbols i.e new line, comma
-        // pulling out unique words from input and store them together
-        // return all the words that start with letter
-        return null;
+    public Set<String> wordsThatStartWithTheLetter(String letter, String input){
+        input = input.toLowerCase()
+                .replace("\n", " ")
+                .replace(",", "")
+                .replace("'", "");
+        System.out.println(input);
+        String[] words = input.split(" ");
+        Map<Character, Set<String>> wordIndex = new TreeMap<>();
+        for(String word : words){
+            char firstLetter = word.charAt(0);
+            if(wordIndex.containsKey(firstLetter)){
+                Set<String> index = wordIndex.get(firstLetter);
+                index.add(word);
+            }else {
+                Set<String> index = new TreeSet<>();
+                index.add(word);
+                wordIndex.put(firstLetter,index);
+            }
+        }
+        return wordIndex.get(letter.charAt(0));
     }
 }
